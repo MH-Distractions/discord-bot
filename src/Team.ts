@@ -16,13 +16,21 @@ export default class Team {
         // Find the previous message I sent
         this.msg = (await this.channel.messages.fetch()).find(msg => msg.author === bot.user)
 
+        let emojis = this.channel.guild.emojis.cache;
+
         // No previous message - I need to create a new message
         if (!this.msg) {
-            this.msg = await this.channel.send('Please select a team');
-            this.msg.react("733022167150624940");
-            this.msg.react("733022218833100882");
-            this.msg.react("733022233278152795");
-            this.msg.react("733022204165357579");
+            this.msg = await this.channel.send([
+                [`Please select your team. Choose wisely, as you will not be given a chance to switch teams unless in special circumstances!`],
+                [`${emojis.array().find(e => e.name === "Emerald")} - Emerald (green)`],
+                [`${emojis.array().find(e => e.name === "Citrine")} - Citrine (orange)`],
+                [`${emojis.array().find(e => e.name === "Amethyst")} - Amethyst (purple)`],
+                [`${emojis.array().find(e => e.name === "Ruby")} - Ruby (red)`]]
+            );
+            this.msg.react(emojis.array().find(e => e.name === "Emerald"));
+            this.msg.react(emojis.array().find(e => e.name === "Citrine"));
+            this.msg.react(emojis.array().find(e => e.name === "Amethyst"));
+            this.msg.react(emojis.array().find(e => e.name === "Ruby"));
         }
 
         // Get the roles
