@@ -22,10 +22,10 @@ export default class Team {
         if (!this.msg) {
             this.msg = await this.channel.send([
                 [`Please select your team. Choose wisely, as you will not be given a chance to switch teams unless in special circumstances!`],
-                [`${emojis.array().find(e => e.name === "Emerald")} - Emerald (green)`],
-                [`${emojis.array().find(e => e.name === "Citrine")} - Citrine (orange)`],
-                [`${emojis.array().find(e => e.name === "Amethyst")} - Amethyst (purple)`],
-                [`${emojis.array().find(e => e.name === "Ruby")} - Ruby (red)`]]
+                [`${emojis.array().filter(e => e.name === "Emerald")} - Emerald (green)`],
+                [`${emojis.array().filter(e => e.name === "Citrine")} - Citrine (orange)`],
+                [`${emojis.array().filter(e => e.name === "Amethyst")} - Amethyst (purple)`],
+                [`${emojis.array().filter(e => e.name === "Ruby")} - Ruby (red)`]]
             );
             this.msg.react(emojis.array().find(e => e.name === "Emerald"));
             this.msg.react(emojis.array().find(e => e.name === "Citrine"));
