@@ -63,13 +63,9 @@ export default class Team {
         let member = this.channel.members.find(m => m.id === user.id);
         let role = this.roles[reaction.emoji.name];
 
-        if (!role) {
-            return false;
-        }
-
         // Check this is a valid role
-        if (!Object.keys(this.roles).includes(role.name)) {
-            console.log(`Unknown team ${role.name}`);
+        if (!role) {
+            console.log(`Unknown team ${reaction.emoji.name}`);
             return false;
         }
 
